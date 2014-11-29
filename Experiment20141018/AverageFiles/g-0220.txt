@@ -1,0 +1,5 @@
+Total Satisfiable Files = 20.0
+Average time for satisfiable = 379.603
+ 
+Total Unsatisfiable Files = 20.0
+Average time for unsatisfiable = 230.535

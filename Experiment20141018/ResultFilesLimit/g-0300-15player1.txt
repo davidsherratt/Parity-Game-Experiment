@@ -1,0 +1,8 @@
+WARNING: for repeatability, setting FPU to use double precision
+============================[ Problem Statistics ]=============================
+|                                                                             |
+|  Number of variables:      27090000                                         |
+|  Number of clauses:        66670320                                         |
+|  Parse time:                  91.61 s                                       |
+===============================================================================
+INDETERMINATE

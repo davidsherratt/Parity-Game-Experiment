@@ -1,0 +1,22 @@
+#! /bin/sh
+
+. ./environ
+
+scriptdir="$pgsatbase/scripts-run-experiment"
+
+list="`ls $resultdir/*.txt | sed "s/...player..txt$//g" | sed "s|$resultdir/||" | perl -ne 'if (!defined $x{$_}) { print $_; $x{$_} = 1; }'`"
+
+echo "name time" > $averagedir/total-unsat.txt
+echo "name time" > $averagedir/total-sat.txt
+for name in $list; do
+  echo "process $name"
+  (cd $javaAvarageDir
+    java AverageResult $resultdir/$name* > $averagedir/$name.txt
+  )
+  printf "$name " >> $averagedir/total-unsat.txt
+  cat $averagedir/$name.txt | $scriptdir/extract-unsat  >> $averagedir/total-unsat.txt
+  printf "$name " >> $averagedir/total-sat.txt
+  cat $averagedir/$name.txt | $scriptdir/extract-sat  >> $averagedir/total-sat.txt
+done
+
+

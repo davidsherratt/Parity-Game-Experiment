@@ -1,0 +1,22 @@
+Plot two graphs against each other:
+
+E=read.table("total-sat.txt",header=TRUE)
+EU=read.table("total-unsat.txt",header=TRUE)
+plot(E,type="l")
+lines(EU,col="red")
+q()
+
+
+
+Plot a line against the graph
+
+EU=read.table("total-unsat.txt",header=TRUE)
+z=EU$time
+x=EU$name
+y=z^(1/4)
+plot(x,y,type="l")
+lines(x,x/52+0.1,col="red")
+y=z^(1/5)
+plot(x,y,type="l")
+lines(x,x/82+0.5,col="red")
+q()

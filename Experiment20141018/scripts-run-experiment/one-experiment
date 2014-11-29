@@ -1,0 +1,40 @@
+#! /bin/sh
+
+. ./environ
+
+if [ $# -ne 1 ]
+then
+  echo "
+          usage: 
+             one-experiment <name of pg game> 
+"
+  exit
+fi
+
+game=$1
+
+echo "
+Process $1
+"
+
+(
+cd $javadir
+
+#Compute C0
+java SGGSolver  $filedir/$game.txt  0
+
+#Run SatSolver on C0
+$minisatdir/minisat $filedir/$game"player0.cnf" > $resultdir/$game"player0.txt"
+
+#Delete C0
+rm $filedir/$game"player0.cnf"
+
+#Compute C1
+java SGGSolver  $filedir/$game.txt  1
+
+#Run SatSolver on C1
+$minisatdir/minisat $filedir/$game"player1.cnf" > $resultdir/$game"player1.txt"
+
+#Delete C1
+rm $filedir/$game"player1.cnf"
+)

@@ -1,0 +1,13 @@
+#! /bin/sh
+
+. ./environ
+
+
+for name in $filedir/*.txt; do
+  out=`echo $name | sed "s/.txt$//" | sed "s|$filedir/||"`
+#  echo "process $out"
+  $pgsatbase/scripts-run-experiment/one-experiment $out
+  mv $name $filedirdone/$out.txt
+done
+
+

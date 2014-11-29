@@ -1,0 +1,30 @@
+#! /bin/sh
+
+. ./environ
+
+if [ $# -ne 4 ]
+then
+  echo "
+          usage: 
+             meta-gen <name of generator> <number of gen calls> <delta> <iterations>
+"
+  exit
+fi
+
+genname=$1
+n=$2
+d=$3
+rep=$4
+
+x=1
+while [ $x -le $n ]; do
+  if [ $(($d * $x)) -ge 20 ]
+  then
+    a="`printf "%04d\n" $(($d * $x))`" 
+    echo "execute >$genname $a $rep<"
+    $pgsatbase/scripts-gen-rand-games2/$genname $a $rep
+  fi
+  x=$((x+1))
+done 
+
+

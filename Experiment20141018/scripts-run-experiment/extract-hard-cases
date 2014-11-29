@@ -1,0 +1,23 @@
+#! /bin/sh
+
+. ./environ
+
+scriptdir="$pgsatbase/scripts-run-experiment"
+
+list="`ls $filedirdone/* | sed "s/.txt$//g" | sed "s|$filedirdone/||"`"
+
+echo "
+Copy potential hard cases to
+   $filedirhardcases
+:
+"
+
+for name in $list; do
+  candidates="`grep "Solved by simplification" $resultdir/$name*`"
+  if [ "$candidates" == "" ]; then
+      cp $filedirdone/$name.txt $filedirhardcases/.
+      echo "   $name "
+  fi
+done
+
+

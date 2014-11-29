@@ -1,0 +1,43 @@
+Memo on running an experiment
+
+PREPARATION
+Before the scripts can be run, the path variables in 
+  [EXPERIMENT]/environ
+have to be set according to the environment.
+
+Make sure that the directories
+  $filedir  $resultdir  $averagedir
+(as specified in environ) are empty
+  
+
+GENERATING GAME FILES
+In directory
+  [EXPERIMENT]/.
+call
+  scripts-gen-rand-games2/meta-gen <name of generator> <number of gen calls>
+  <delta> <iterations>
+where
+  <name of generator> is one of 
+    gen-rand-games  gen-rand-games2  gen-rand-bipartite  gen-steady-rand-games
+  <number of gen calls> and <delta> determine the sizes of games graphs
+  (i.e. their nodes) to the range
+    <delta>, <delta>*2, <delta>*3, ..., <delta>*<number of gen calls>
+  <iterations>  determines how many instances of graphs for a particular size
+  shall be generated
+
+
+RUNNING THE EXPERIMENT
+In directory
+  [EXPERIMENT]/.
+call
+  scripts-run-experiment/run-all
+
+
+STATISTICAL ANALYSIS
+This computes for each size instance the _worst_ case (although the files are
+denoted "average" -> need to be renamed!)
+In directory
+  [EXPERIMENT]/.
+call
+  scripts-run-experiment/calc-average
+

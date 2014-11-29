@@ -1,0 +1,13 @@
+pgdir="/home/csarnold/ParityGames/pgsolver-old"
+minisatdir="/home/csarnold/MiniSat-2.0.0"
+pgsatbase="/home/csarnold/Experiment20141018"
+
+filedir="$pgsatbase/GameFiles"
+filedirdone="$pgsatbase/GameFilesDone"
+filedirhardcases="$pgsatbase/HardCases"
+resultdir="$pgsatbase/ResultFiles"
+javadir="$pgsatbase/CNFGeneratorV3"
+javaAvarageDir="$pgsatbase/AverageCalculator"
+averagedir="$pgsatbase/AverageFiles"
+gname="g"
+

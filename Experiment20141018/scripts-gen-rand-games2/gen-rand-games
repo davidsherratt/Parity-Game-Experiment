@@ -1,0 +1,30 @@
+#! /bin/sh
+
+. ./environ
+
+if [ $# -ne 2 ]
+then
+  echo "
+          usage: 
+             gen-rand-games <number of nodes> <iteration>
+"
+  exit
+fi
+
+nodes=$1
+rep=$2
+
+echo "
+Generate $rep files with parameter ($nodes,2,2) of the form 
+    $gname-$nodes-??.txt
+in >$filedir<
+"
+
+i=1
+while [ $i -le $rep ]; do
+  a="`printf "%02d\n" $i`" 
+  $pgdir/bin/randomgame $nodes 2 2 2 x > "$filedir/$gname-$nodes-$a.txt"
+  i=$((i+1))
+done 
+
+

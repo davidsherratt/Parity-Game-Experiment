@@ -1,0 +1,9 @@
+#! /usr/bin/perl
+
+@lines =  <STDIN>;
+
+$_ = $lines[1];
+s/^[^=]*= (.*)\n/\1/;
+print;
+print "\n";
+
